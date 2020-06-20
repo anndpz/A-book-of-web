@@ -18,23 +18,35 @@ Cookie 本身的存储是十分简单的，是使用键值对的方式来进行�
 
 下面的这个函数是用来检查 Cookie 的，代码不难看懂，就是来得到cookie里面的一个值，如果有name的值就正常，否则就不认识你。这里的Cookie 怎么得到呢？ 这里就使用 `cookie.set`的方法来设置cookie的值。
 
-```text
-router.get('/chk_cookie', async (ctx, next) => {  if (ctx.cookies.get('name') == undefined) {    ctx.body = "i don't know you!"  } else {    ctx.body = 'hey, there ' + ctx.cookies.get('name')  }});
+```javascript
+router.get('/chk_cookie', async (ctx, next) => {
+  if (ctx.cookies.get('name') == undefined) {
+    ctx.body = "i don't know you!"
+  } else {
+    ctx.body = 'hey, there ' + ctx.cookies.get('name')
+  }
+});
 ```
 
-‌
+设置cookie的代码在下面，很容易的实现了一个 设置 cookie的功
 
-设置cookie的代码在下面，很容易的实现了一个 设置 cookie的功能。
-
-```text
-router.get('/get_cookie', async (ctx, next) => {  ctx.cookies.set(    'name',     'ann'  )  ctx.body = 'cookie is ok'});
+```javascript
+‌router.get('/get_cookie', async (ctx, next) => {
+  ctx.cookies.set(
+    'name', 
+    'ann',
+    {
+      // domain: 'localhost',  // 写cookie所在的域名
+      // path: '/index',       // 写cookie所在的路径
+      maxAge: 10 * 60 * 1000, // cookie有效时长
+      expires: new Date('2017-02-15'),  // cookie失效时间
+      httpOnly: false,  // 是否只用于http请求中获取
+      overwrite: false  // 是否允许重写
+    }
+  )
+  ctx.body = 'cookie is ok'
+});
 ```
-
-‌
-
-### 简单的登录 <a id="jian-dan-de-deng-lu"></a>
-
-‌
 
 前面知道了cookie是用来记载登录状态的，后面就来使用它，来完成一次登陆，以及登录的验证。‌
 
