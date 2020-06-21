@@ -15,6 +15,11 @@
 * [Untitled](shi-jian-pian/untitled.md)
 * [SSE 技术实现服务器主动推送](shi-jian-pian/sse-ji-shu-shi-xian-fu-wu-qi-zhu-dong-tui-song.md)
 
+## 杂谈
+
+* [NodeJS里面的异步](za-tan/nodejs-li-mian-de-yi-bu.md)
+* [如何自己写一个中间件](za-tan/ru-he-zi-ji-xie-yi-ge-zhong-jian-jian.md)
+
 ---
 
 * [第一章](chapter1.md)
